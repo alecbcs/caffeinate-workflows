@@ -47,7 +47,7 @@ jobs:
               printf "Dockerfile ${{ matrix.dockerfile[0] }} does not exist"
               exit 1;
           fi
-          docker build -f ${{ matrix.dockerfile[0] }} -t ${{ env.container }} -t ${{ env.versioned }} .
+          docker build -f ${{ matrix.dockerfile[0] }} --build-arg version=${GITHUB_REF##*/} -t ${{ env.container }} -t ${{ env.versioned }} .
           docker images
 
       - name: Log in to GitHub Container Registry
