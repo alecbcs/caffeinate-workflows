@@ -1,4 +1,7 @@
-FROM golang:1.18.0-alpine3.15 AS builder
+FROM golang:alpine AS builder
+
+# Add Maintainer Info
+LABEL maintainer="Alec Scott <alecbcs@github.com>"
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
