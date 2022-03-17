@@ -12,7 +12,7 @@ RUN go mod download
 # Copy the source to build container
 COPY . .
 
-ARG VERSION=Develop
+ARG VERSION
 
 # Build the Go app
 RUN CGO_ENABLED=0 go build -ldflags "-s -w -X github.com/alecbcs/caffeinate-workflows/main.Version=${VERSION}" -o caffeinate-workflows .
@@ -21,4 +21,4 @@ FROM scratch
 
 COPY --from=builder /app/caffeinate-workflows /caffeinate-workflows
 
-ENTRYPOINT ["caffeinate-workflows"]
+ENTRYPOINT ["/caffeinate-workflows"]
