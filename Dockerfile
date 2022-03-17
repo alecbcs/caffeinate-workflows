@@ -1,4 +1,4 @@
-FROM golang:1.18 AS builder
+FROM 1.18.0-alpine3.15 AS builder
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
@@ -12,12 +12,12 @@ RUN go mod download
 # Copy the source to build container
 COPY . .
 
-ARG VERSION
+ARG VERSION=Develop
 
 # Build the Go app
 RUN CGO_ENABLED=0 go build -ldflags "-s -w -X github.com/alecbcs/caffeinate-workflows/main.Version=${VERSION}" -o caffeinate-workflows .
 
-FROM scratch
+FROM alpine:3.15.0
 
 COPY --from=builder /app/caffeinate-workflows /caffeinate-workflows
 
