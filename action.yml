@@ -18,5 +18,5 @@ runs:
   image: 'docker://ghcr.io/alecbcs/caffeinate-workflows:latest'
 
 branding:
-  icon: 'coffee'
+  icon: 'toggle-right'
   color: 'white'
