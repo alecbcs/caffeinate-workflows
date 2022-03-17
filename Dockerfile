@@ -1,7 +1,9 @@
-FROM golang:alpine AS builder
+FROM golang:1.18.0-alpine3.15 AS builder
 
 # Add Maintainer Info
 LABEL maintainer="Alec Scott <alecbcs@github.com>"
+
+RUN apk add --no-cache git
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
