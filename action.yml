@@ -1,0 +1,22 @@
+name: 'Caffeinate Workflows'
+author: 'Alec Scott'
+description: 'Prevent GitHub Workflows From Being Disabled After 60 Days.'
+inputs:
+  github_token:
+    description: 'Token used for authenticating with the upstream repository'
+    required: true
+  github_repository:
+    description: 'Repository identifier in the form of owner/repository.'
+    required: true
+  workflow_files:
+    description: 'Comma seperated names of the workflow files that should be kept caffeinated.'
+    required: false
+    default: ''
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/alecbcs/caffeinate-workflows:latest'
+
+branding:
+  icon: 'coffee'
+  color: 'white'
